@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb://127.0.0.1:27017/TODO',
+mongoose.connect('mongodb+srv://Keiraaa:Koplo212@cluster0.teekzhr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Todo',
     console.log('MongoDB connected')
 )
 
@@ -16,11 +16,13 @@ app.listen(5000,
 )
 
 app.post('/add', (req, res) => {
-  const { task } = req.body;
-  TodoModel.create({ task })
+  const { task, dueDate } = req.body;
+  TodoModel.create({
+    task,
+    dueDate: dueDate ? new Date(dueDate) : null  // Parse as Date if provided
+  })
       .then(result => res.json(result))
       .catch(err => console.log(err));
-   
 });
 
 app.get('/get',(req,res)=>{

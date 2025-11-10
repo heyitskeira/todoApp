@@ -43,7 +43,7 @@ const Home = () => {
                 setTodos(updatedTodos);
                 setTaskid('');
                 setUpdatetask('');
-                Window.location.reload();
+                window.location.reload();  // Note: Fixed capitalization of 'window'
             })
             .catch(err => console.log(err));
     };
@@ -71,7 +71,10 @@ const Home = () => {
                                 {taskid === todo._id ?
                                     <input type='text' value={updatetask} onChange={e => setUpdatetask(e.target.value)} />
                                     :
-                                    <p className={todo.done ? 'through' : 'normal'}>{todo.task}</p>
+                                    <p className={todo.done ? 'through' : 'normal'}>
+                                        {todo.task}
+                                        {todo.dueDate ? ` - Due: ${new Date(todo.dueDate).toLocaleDateString()}` : ''}  {/* Display due date if it exists */}
+                                    </p>
                                 }
                             </div>
                             <div>
