@@ -7,7 +7,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect('mongodb+srv://Keiraaa:Koplo212@cluster0.teekzhr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Todo',
+mongoose.connect('mongodb+srv://username:password@cluster0.teekzhr.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0/Todo',
     console.log('MongoDB connected')
 )
 
@@ -54,3 +54,4 @@ app.delete('/delete/:id',(req,res)=>{
  }); 
 
 module.exports=app;
+
